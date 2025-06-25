@@ -9,7 +9,12 @@
             --shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            padding-top: 72px;
             margin: 0;
             font-family: 'Montserrat', Arial, sans-serif;
             background: var(--bg);
@@ -17,6 +22,11 @@
         }
 
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 100;
             background: var(--primary);
             padding: 0;
             box-shadow: var(--shadow);
@@ -46,6 +56,11 @@
 
         nav ul li a:hover {
             color: var(--accent);
+        }
+        nav ul li a.active,
+        nav ul li a:focus {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
         }
 
         section {
@@ -267,6 +282,9 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding-top: 112px;
+            }
             nav ul {
                 flex-direction: column;
             }
