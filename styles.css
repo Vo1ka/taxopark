@@ -1,5 +1,5 @@
 :root {
-            --yellow: #ffe14a;
+            --yellow: #ebca24;
             --yellow-hover: #ffef8e;
             --black: #222;
             --gray-bg: #f6f6f6;
@@ -23,7 +23,7 @@
 
         /* --- Хедер --- */
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             width: 100vw;
@@ -77,7 +77,6 @@
         .header-phone a:hover {
             background: var(--yellow-hover);
         }
-        body { padding-top: 90px; }
 
         @media (max-width: 800px) {
             .header-flex { flex-direction: column; gap: 10px; }
@@ -98,6 +97,78 @@
             object-fit: cover;
             border-radius: 32px;
             display: block;
+        }
+
+        /* Калькулятор */
+
+        .calculator-section {
+            background: #fffbe5;
+            padding: 48px 0 36px 0;
+            border-radius: 32px;
+            margin-bottom: 36px;
+        }
+        .calculator-section h2 {
+            text-align: center;
+            margin-bottom: 28px;
+            font-size: 2em;
+        }
+        .rent-calc-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 32px 18px 28px 18px;
+        }
+        .calc-row {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+        .rent-calc-form label {
+            display: flex;
+            flex-direction: column;
+            font-weight: 500;
+            font-size: 1.06em;
+            min-width: 180px;
+            gap: 6px;
+        }
+        .rent-calc-form select, .rent-calc-form input[type="number"] {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1.5px solid #eaeaea;
+            font-size: 1.05em;
+            background: #f9f9f9;
+        }
+        #calc-btn {
+            min-width: 180px;
+        }
+        .calc-result {
+            margin-top: 16px;
+            font-size: 1.18em;
+            text-align: center;
+        }
+        #calc-sum {
+            font-size: 1.3em;
+            color: #111;
+            font-weight: 700;
+        }
+        .calc-tip {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 6px;
+        }
+        .btn-small {
+            margin-top: 16px;
+            font-size: 1em;
+            padding: 10px 28px;
+            border-radius: 20px;
         }
 
         /* --- Оффер и преимущества --- */
@@ -297,7 +368,7 @@
         }
         .req-flex {
             display: flex;
-            gap: 60px;
+            gap: 160px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -562,4 +633,7 @@
             .container { padding: 0 8px; }
             .getcar-form { padding: 16px 6px; }
             .footer-flex { flex-direction: column; gap: 10px; align-items: flex-start;}
+            .rent-calc-form { padding: 18px 4px; }
+            .calc-row { flex-direction: column; gap: 12px;}
+            .rent-calc-form label { min-width: 0;}
         }

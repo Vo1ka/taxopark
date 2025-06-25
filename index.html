@@ -11,7 +11,7 @@
     <header>
         <div class="container header-flex">
             <a href="#" class="logo">
-                <img src="logo.png" alt="Логотип">
+                <img src="logo.jpg" alt="Логотип">
             </a>
             <nav>
                 <ul>
@@ -33,6 +33,43 @@
         <div class="hero-slider">
             <img src="hero1.jpg" class="hero-img" alt="Автомобили такси под снегом">
             <!-- Добавь другие слайды, если нужно -->
+        </div>
+    </section>
+
+     <!-- Калькулятор стоимости аренды -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2>Рассчитайте стоимость аренды автомобиля</h2>
+            <form class="rent-calc-form" autocomplete="off">
+            <div class="calc-row">
+                <label>
+                Категория авто:
+                <select id="car-category" required>
+                    <option value="comfort">Комфорт</option>
+                    <option value="comfort-plus">Комфорт+</option>
+                    <option value="economy">Эконом</option>
+                </select>
+                </label>
+                <label>
+                Модель:
+                <select id="car-model" required>
+                    <!-- Модели будут подгружаться динамически -->
+                </select>
+                </label>
+                <label>
+                Срок аренды (дней):
+                <input type="number" id="rent-days" min="1" max="30" value="7" required>
+                </label>
+            </div>
+            <div class="calc-row">
+                <button type="button" id="calc-btn" class="btn-main">Рассчитать</button>
+            </div>
+            <div class="calc-result" id="calc-result" style="display:none;">
+                <span>Примерная стоимость: <b id="calc-sum"></b> ₽</span>
+                <div class="calc-tip">* Итоговая цена может отличаться, уточняйте детали у менеджера.</div>
+                <a href="#get-car" class="btn-main btn-small">Оставить заявку</a>
+            </div>
+            </form>
         </div>
     </section>
 
@@ -81,6 +118,12 @@
             </div>
         </section>
     </section>
+
+      <!-- Ваша выгода за 1 минуту -->
+  <section id="your-benefit" class="benefit-section">
+    <!-- Здесь будет инфографика -->
+  </section>
+
 
     <!-- Автомобили -->
     <section id="cars" class="cars-section">
@@ -146,7 +189,7 @@
                     <span>Комиссия только при работе через наш парк.</span>
                 </div>
                 <div class="cond-item">
-                    <img src="conditions-photo.jpg" alt="Автомобили парка">
+                    <img src="cars.png" alt="Автомобили парка">
                 </div>
                 <div class="cond-item">
                     <strong>Обслуживание за наш счет</strong>
@@ -307,8 +350,8 @@
     <footer>
         <div class="container footer-flex">
             <div class="footer-left">
-                <img src="logo.png" alt="Такси Плюс">
-                <span>Такси Плюс</span>
+                <img src="logo.jpg" alt="Такси Плюс">
+                <span>Таксопарк</span>
                 <a href="tel:+79991234567">+7(999) 123-45-67</a>
                 <a href="https://wa.me/79991234567" target="_blank">WhatsApp</a>
             </div>
@@ -319,5 +362,8 @@
             </div>
         </div>
     </footer>
+
+
+    <script src="./scripts.js"></script>
 </body>
 </html>

@@ -74,3 +74,64 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+const carData = {
+  "comfort": [
+    { model: "Hyundai Solaris", price: 3200 },
+    { model: "Kia Rio", price: 3300 }
+  ],
+  "comfort-plus": [
+    { model: "Skoda Octavia", price: 3700 },
+    { model: "Toyota Camry", price: 4200 }
+  ],
+  "economy": [
+    { model: "Renault Logan", price: 2800 },
+    { model: "Volkswagen Polo", price: 2900 }
+  ]
+};
+
+function fillModels(category) {
+  const select = document.getElementById('car-model');
+  select.innerHTML = '';
+  if (carData[category]) {
+    carData[category].forEach(car => {
+      const opt = document.createElement('option');
+      opt.value = car.model;
+      opt.textContent = car.model;
+      select.appendChild(opt);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const carCategory = document.getElementById('car-category');
+  fillModels(carCategory.value);
+
+  carCategory.addEventListener('change', function() {
+    fillModels(this.value);
+  });
+
+  document.getElementById('calc-btn').addEventListener('click', function() {
+    const cat = document.getElementById('car-category').value;
+    const model = document.getElementById('car-model').value;
+    const days = Math.max(1, parseInt(document.getElementById('rent-days').value) || 1);
+
+    // Валидация
+    if (!cat || !model || isNaN(days) || days < 1) {
+      alert('Пожалуйста, выберите категорию, модель и укажите срок аренды.');
+      return;
+    }
+    const car = carData[cat].find(c => c.model === model);
+    if (!car) {
+      alert('Модель не найдена!');
+      return;
+    }
+    let sum = car.price * days;
+    // Пример скидки: при аренде от 14 дней скидка 10%
+    if (days >= 14) sum = Math.round(sum * 0.9);
+
+    document.getElementById('calc-sum').textContent = sum.toLocaleString('ru-RU');
+    document.getElementById('calc-result').style.display = 'block';
+  });
+});
