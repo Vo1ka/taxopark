@@ -1,308 +1,565 @@
-        :root {
-            --primary: #2c3e50;
-            --accent: #f9ca24;
-            --bg: #f4f6fb;
-            --card-bg: #fff;
-            --text: #222;
-            --border: #e1e1e1;
-            --radius: 14px;
-            --shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
-        }
-
-        html {
-            scroll-behavior: smooth;
+:root {
+            --yellow: #ffe14a;
+            --yellow-hover: #ffef8e;
+            --black: #222;
+            --gray-bg: #f6f6f6;
+            --gray: #eaeaea;
+            --card-radius: 20px;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
 
         body {
-            padding-top: 72px;
-            margin: 0;
             font-family: 'Montserrat', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: #fff;
+            color: var(--black);
+            margin: 0;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Хедер --- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
+            background: #fff;
             z-index: 100;
-            background: var(--primary);
-            padding: 0;
             box-shadow: var(--shadow);
         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 28px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1em;
-            padding: 22px 0;
-            display: block;
-            transition: color 0.2s;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-        nav ul li a.active,
-        nav ul li a:focus {
-            color: var(--accent);
-            border-bottom: 2px solid var(--accent);
-        }
-
-        section {
-            padding: 56px 0 36px 0;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 36px;
-            font-size: 2.2em;
-            color: var(--primary);
-            letter-spacing: 1px;
-        }
-        /* Slider */
-        .cars-slider-wrapper {
-            position: relative;
+        .header-flex {
             display: flex;
             align-items: center;
-            justify-content: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 8px;
+            justify-content: space-between;
+            min-height: 80px;
         }
-
-        .cars-slider {
-            overflow: hidden;
-            flex: 1 1 auto;
+        .logo img {
+            height: 48px;
+            border-radius: 12px;
+            background: var(--yellow);
+            padding: 6px;
         }
-        .slider-btn {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            font-size: 2em;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: background 0.2s;
-            z-index: 2;
-        }
-        .slider-btn:disabled {
-            opacity: 0.4;
-            cursor: default;
-        }
-        .slider-btn:hover:not(:disabled) {
-            background: #ffeaa7;
-        }
-
-                
-
-        /* Карточки */
-        .about-cards, .offer-cards, .requirements-cards, .cars-cards {
+        nav ul {
             display: flex;
-            flex-wrap: wrap;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-            gap: 28px;
-            justify-content: center;
-        }
-
-        .card, .car-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 30px 24px;
-            min-width: 320px;
-            max-width: 340px;
-            flex: 1 1 230px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-
-        .card h3, .car-card h3 {
-            margin-top: 0;
-            color: var(--primary);
-            font-size: 1.25em;
-        }
-
-        .car-card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            margin-bottom: 18px;
-        }
-
-        .car-card ul {
-            padding: 0;
+            gap: 32px;
             list-style: none;
             margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: var(--black);
+            font-size: 1.08em;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: border .2s, color .2s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--yellow);
+            border-bottom: 2px solid var(--yellow);
+        }
+        .header-phone a {
+            background: var(--yellow);
+            color: var(--black);
+            font-weight: 700;
+            border-radius: 20px;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background .2s;
+            display: inline-block;
+        }
+        .header-phone a:hover {
+            background: var(--yellow-hover);
+        }
+        body { padding-top: 90px; }
+
+        @media (max-width: 800px) {
+            .header-flex { flex-direction: column; gap: 10px; }
+            nav ul { gap: 18px; }
+            .header-phone a { padding: 10px 18px; font-size: 0.98em;}
+            body { padding-top: 130px; }
         }
 
-        .car-card ul li {
-            margin-bottom: 6px;
+        /* --- Герой/Слайдер --- */
+        .hero {
+            background: none;
+            margin-bottom: 36px;
+            padding: 0;
+        }
+        .hero-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 32px;
+            display: block;
         }
 
-        /* Фото-блок */
-        .photo-slider {
+        /* --- Оффер и преимущества --- */
+        .main-offer {
+            padding: 56px 0 30px 0;
+        }
+        .offer-flex {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .offer-left { flex: 1 1 340px; }
+        .offer-right { flex: 1 1 340px; }
+        .offer-subtitle {
+            color: #888;
+            font-size: 1em;
+            margin-bottom: 12px;
+        }
+        .main-offer h1 {
+            font-size: 2.3em;
+            margin: 0 0 18px 0;
+            font-weight: 700;
+            line-height: 1.21;
+        }
+        .offer-right p {
+            font-size: 1.1em;
+            margin-bottom: 22px;
+        }
+        .btn-main {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--black);
+            font-weight: 700;
+            border-radius: 24px;
+            padding: 13px 38px;
+            font-size: 1.18em;
+            text-decoration: none;
+            transition: background .2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-main:hover {
+            background: var(--yellow-hover);
+        }
+
+        .advantages-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+            justify-items: stretch;
+        }
+        .adv-card {
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 28px 30px 22px 30px;
+            font-size: 1.08em;
+            border: 1.5px solid #eaeaea;
+            font-weight: 400;
+            transition: box-shadow .2s;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            min-height: 120px;
+        }
+        .adv-card.yellow {
+            background: #ffe14a;
+            border: none;
+        }
+        .adv-card strong {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .adv-card span {
+            color: #222;
+            font-size: 1em;
         }
 
-        .photo-row {
+        /* --- Автомобили --- */
+        .cars-section {
+            background: var(--gray-bg);
+            padding: 56px 0 48px 0;
+        }
+        .cars-section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .cars-desc {
+            color: #444;
+            margin-bottom: 24px;
+        }
+        .cars-categories {
             display: flex;
             gap: 14px;
-            justify-content: center;
+            margin-bottom: 32px;
         }
-
-        .photo-row img {
-            width: 160px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+        .cars-categories button {
+            border: none;
             background: #fff;
+            color: var(--black);
+            font-weight: 600;
+            border-radius: 16px;
+            padding: 10px 24px;
+            font-size: 1.05em;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .cars-categories button.active, .cars-categories button:hover {
+            background: var(--black);
+            color: #fff;
+        }
+        .cars-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: flex-start;
+        }
+        .car-card {
+            background: #fff;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            padding: 0 0 18px 0;
+            min-width: 270px;
+            max-width: 330px;
+            flex: 1 1 270px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .car-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: var(--card-radius) var(--card-radius) 0 0;
+        }
+        .car-title {
+            font-weight: 700;
+            font-size: 1.13em;
+            margin: 14px 0 6px 0;
+        }
+        .car-info {
+            color: #444;
+            font-size: 0.97em;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+        .car-price {
+            background: var(--yellow);
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 7px 22px;
+            font-size: 1.09em;
+            margin-top: 12px;
         }
 
-        /* Контакты */
-        .contacts-info {
+        /* --- Условия --- */
+        .conditions-section {
+            padding: 56px 0 30px 0;
+        }
+        .conditions-list {
             display: flex;
             flex-wrap: wrap;
             gap: 28px;
             align-items: flex-start;
-            justify-content: center;
         }
-
-        .contacts-info > div {
-            min-width: 260px;
-        }
-
-        .map iframe {
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
+        .cond-item {
+            background: #fff;
+            border-radius: var(--card-radius);
             box-shadow: var(--shadow);
-            width: 340px;
-            height: 220px;
+            padding: 22px 24px;
+            min-width: 220px;
+            max-width: 340px;
+            flex: 1 1 220px;
+            font-size: 1.05em;
+            border: 1.5px solid var(--gray);
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .cond-item img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 10px;
         }
 
-        /* Форма регистрации */
-        .register-form {
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
-            border-radius: var(--radius);
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 32px 24px;
+        /* --- Требования --- */
+        .requirements-section {
+            background: var(--gray-bg);
+            padding: 56px 0 30px 0;
+        }
+        .req-flex {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .req-img img {
+            width: 140px;
+            border-radius: 10px;
+        }
+        .req-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.13em;
             display: flex;
             flex-direction: column;
             gap: 18px;
-            border: 1px solid var(--border);
+        }
+        .req-list li:before {
+            content: "→";
+            color: var(--black);
+            margin-right: 12px;
         }
 
-        .register-form label {
-            font-weight: 600;
-            margin-bottom: 5px;
+        /* --- Как получить авто --- */
+        .how-to-get {
+            padding: 56px 0 30px 0;
         }
-
-        .register-form input {
-            padding: 9px 12px;
-            border-radius: 7px;
-            border: 1px solid var(--border);
-            font-size: 1em;
-            background: #f8f8fb;
+        .how-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            flex-wrap: wrap;
         }
-
-        .register-form button {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 12px 0;
-            border-radius: 7px;
+        .how-left h2 {
+            font-size: 1.6em;
             font-weight: 700;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background 0.2s;
+        }
+        .how-steps {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 22px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .how-steps li {
+            position: relative;
+            padding-left: 36px;
+        }
+        .how-steps li:before {
+            content: "";
+            position: absolute;
+            left: 0; top: 8px;
+            width: 16px; height: 16px;
+            background: #ff4747;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #ffd600;
+        }
+        .step-title {
+            font-weight: 700;
+            margin-right: 12px;
+            color: var(--black);
+        }
+        .how-steps small {
+            display: block;
+            color: #555;
+            margin-top: 3px;
+            font-size: 0.97em;
         }
 
-        .register-form button:hover {
-            background: #ffeaa7;
-        }
-
-        /* Подвал */
-        footer {
-            background: var(--primary);
+        /* --- Контакты --- */
+        .contacts-section {
+            background: #181818;
             color: #fff;
-            text-align: center;
-            padding: 32px 0 18px 0;
-            margin-top: 44px;
+            padding: 56px 0 0 0;
+        }
+        .contacts-flex {
+            display: flex;
+            gap: 60px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .contacts-block { display: flex; gap: 56px; flex-wrap: wrap;}
+        .contacts-col {
+            min-width: 220px;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: 1em;
+        }
+        .contacts-col a {
+            color: #ffe14a;
+            text-decoration: underline;
+        }
+        .contacts-map iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 350px;
+            border: none;
+            border-radius: 16px;
+            margin: 24px 0 0 0;
         }
 
-        .footer-content p {
-            margin: 0 0 7px 0;
+        /* --- FAQ --- */
+        .faq-section {
+            padding: 56px 0 30px 0;
+        }
+        .faq-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 16px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 18px 22px;
+        }
+        .faq-item ul {
+            margin: 8px 0 0 22px;
+            padding: 0;
+        }
+        .faq-item details summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.07em;
+            outline: none;
+            padding: 7px 0;
+        }
+        .faq-item details[open] summary {
+            color: var(--yellow);
+        }
+        .faq-item details p {
+            margin: 10px 0 0 0;
+            color: #444;
             font-size: 1em;
         }
 
-        /* Адаптивность */
-        @media (max-width: 900px) {
-            .about-cards, .offer-cards, .requirements-cards, .cars-cards, .photo-row, .contacts-info {
-                flex-direction: column;
-                align-items: center;
-            }
-            .car-card {
-                min-width: 260px;
-                max-width: 270px;
-                flex: 0 0 260px;
-            }   
-            .photo-row img {
-                width: 95vw;
-                max-width: 330px;
-            }
-            .map iframe {
-                width: 90vw;
-                max-width: 340px;
-            }
+        /* --- Форма --- */
+        .form-section {
+            background: var(--gray-bg);
+            padding: 56px 0 30px 0;
+        }
+        .form-flex {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .form-img img {
+            width: 340px;
+            border-radius: 18px;
+        }
+        .getcar-form {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 32px 28px;
+            min-width: 300px;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .getcar-form h2 {
+            margin: 0 0 8px 0;
+        }
+        .getcar-form label {
+            font-weight: 500;
+            font-size: 1.05em;
+            margin-bottom: 6px;
+        }
+        .getcar-form input {
+            margin-top: 6px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1.5px solid var(--gray);
+            font-size: 1.08em;
+            background: #f9f9f9;
+        }
+        .getcar-form button {
+            margin-top: 12px;
+        }
+        .getcar-form small {
+            color: #666;
+            font-size: 0.92em;
+            margin-top: 12px;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding-top: 112px;
-            }
-            nav ul {
+        /* --- Подвал --- */
+        footer {
+            background: #181818;
+            color: #fff;
+            padding: 32px 0 22px 0;
+        }
+        .footer-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-left img {
+            height: 32px;
+            border-radius: 8px;
+            background: var(--yellow);
+            padding: 2px;
+            margin-right: 10px;
+        }
+        .footer-left span {
+            font-weight: 700;
+            font-size: 1.13em;
+            margin-right: 18px;
+        }
+        .footer-left a {
+            color: #ffe14a;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+        .footer-right a {
+            color: #ffe14a;
+            text-decoration: underline;
+            font-size: 0.98em;
+        }
+
+        @media (max-width: 1100px) {
+            .offer-flex, .form-flex, .how-flex, .contacts-flex, .footer-flex {
                 flex-direction: column;
+                gap: 32px;
+                align-items: stretch;
             }
-            nav ul li {
-                margin: 0 0 8px 0;
+            .advantages-cards, .cars-list, .conditions-list {
+                flex-direction: column;
+                gap: 18px;
             }
-            section {
-                padding: 32px 0 18px 0;
+            .car-card, .cond-item, .adv-card {
+                max-width: 100%;
             }
-            .register-form {
-                padding: 18px 6px;
+            .form-img img { width: 100%; }
+        }
+        @media (max-width: 900px) {
+            .advantages-cards {
+                grid-template-columns: 1fr;
             }
-            .car-card {
-                min-width: 90vw;
-                max-width: 95vw;
-                flex: 0 0 90vw;
+            .adv-card {
+                min-width: 0;
+                max-width: 100%;
             }
-            .cars-slider-wrapper {
-                gap: 2px;
-            }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 0 8px; }
+            .getcar-form { padding: 16px 6px; }
+            .footer-flex { flex-direction: column; gap: 10px; align-items: flex-start;}
         }
