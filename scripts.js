@@ -75,6 +75,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryButtons = document.querySelectorAll('.cars-categories button');
+    const carCards = document.querySelectorAll('.car-card');
+
+    function showCategory(category) {
+        carCards.forEach(card => {
+            if (card.dataset.category === category) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        categoryButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.category === category);
+        });
+    }
+
+    // По умолчанию показываем первую категорию
+    const defaultCategory = document.querySelector('.cars-categories button.active').dataset.category;
+    showCategory(defaultCategory);
+
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            showCategory(this.dataset.category);
+        });
+    });
+});
+
+
 
 const carData = {
   "comfort": [
